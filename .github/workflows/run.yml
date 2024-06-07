@@ -1,0 +1,25 @@
+name: microcms-build
+on: 
+  push:
+    branches: [main]
+
+jobs:
+  job-name:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - used: actions/setup-node@v4
+      with:
+        node-version: 20
+    
+    - run: |
+      npm ci
+      npm run build
+    env:
+      MICROCMS_SERVICE_DOMAIN: ${{ secrets.MICROCMS_SERVICE_DOMAIN }}
+      MICROCMS_API_KEY: ${{ secrets.MICROCMS_API_KEY }}
+
+    - run: |
+      ls -lr out
+
