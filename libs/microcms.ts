@@ -29,7 +29,7 @@ export const getList = async (queries?: MicroCMSQueries) => {
     const listData = await client.getList<Blog>({
         endpoint: "blogs",
         queries,
-        // customRequestInit: { next: { revalidate: 1 } }, // fetch-cache を使用しない
+        // customRequestInit: { next: { revalidate: 0 } }, // fetch-cache を使用しない
         // customRequestInit: { cache: "no-store" }, // fetch-cache を使用しない
     });
 
@@ -46,7 +46,7 @@ export const getDetail = async (
         endpoint: "blogs",
         contentId,
         queries,
-        // customRequestInit: { next: { revalidate: 1 } },
+        // customRequestInit: { next: { revalidate: 0 } },
         // customRequestInit: { cache: "no-store" }, // fetch-cache を使用しない
     });
 
