@@ -2,6 +2,8 @@ name: microcms-build
 on: 
   push:
     branches: [main]
+  repository_dispatch:
+      types: [blog-update]
 
 jobs:
   job-name:
